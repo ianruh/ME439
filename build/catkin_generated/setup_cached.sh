@@ -7,8 +7,9 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/pi/catkin_ws/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/pi/catkin_ws/devel/lib:$LD_LIBRARY_PATH"
-export PWD="/home/pi/catkin_ws/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/pi/catkin_ws/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/pi/catkin_ws/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/root/ME439/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/root/ME439/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/root/ME439/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PWD="/root/ME439/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/root/ME439/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/home/pi/catkin_ws/src:/root/ME439/src:$ROS_PACKAGE_PATH"

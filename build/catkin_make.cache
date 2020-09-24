@@ -1,2 +1,2 @@
-basic_motors
--DCATKIN_DEVEL_PREFIX=/home/pi/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/pi/catkin_ws/install -G Unix Makefiles
+basic_motors:basic_motors_and_sensors:simulate
+-DCATKIN_DEVEL_PREFIX=/root/ME439/devel -DCMAKE_INSTALL_PREFIX=/root/ME439/install -G Unix Makefiles

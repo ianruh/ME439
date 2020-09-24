@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/pi/catkin_ws/devel/setup.sh
+    local-name: /root/ME439/devel/setup.sh

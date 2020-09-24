@@ -1,0 +1,8 @@
+prefix=/root/ME439/devel
+
+Name: simulate
+Description: Description of simulate
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
