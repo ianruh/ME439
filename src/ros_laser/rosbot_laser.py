@@ -1,54 +1,61 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Nov 27 19:30:16 2020
-
-@author: sinas
-"""
+import rospy
 
 from sensor_msgs.msg import LaserScan
+
 
 class Rosbot():
     def __init__(self):
         
         self.rosbot_sub = rospy.Subscriber("/scan", LaserScan, self.scan_callback)
-        self.a = 0.0
-        self.b = 0.0
-        self.c = 0.0
-        self.d = 0.0
+
+        self.l = 0.0 # left (The Robot's Right)
+        self.b = 0.0 # back (The Robot's Front)
+        self.r = 0.0 # right (The Robot's Left)
         self.ctrl_c = False
         
         self.rate = rospy.Rate(10) #10 hz
+        
         rospy.on_shutdown(self.shutdownhook)
         
-    def scan_callback(self, msg):
-        self.a = msg.ranges[180]
-        self.b = msg.ragnes[len(msg.ragnes)/2]
-        self.c = msg.ranges[540]
-        self.d = msg.ranges[1]
+    def scan_callback(self,msg):
         
+        ###############################################################
+        #### NOTE : The RP Lidar is able to read valus > 0.135(m) #####
+        ###############################################################
+        # len.msg.ranges = 720
+        
+        self.l = msg.ranges[len(msg.ranges)/4] # 90 degree
+        self.b = msg.ranges[len(msg.ranges)/4*2] # 180 degree
+        self.r = msg.ranges[len(msg.ranges)/4*3] # 270 degree
         
     def read_laser(self):
+        
         while not self.ctrl_c:
-            if self.b > 5:
-                self.b=5
-            if self.a > 5:
-                self.a = 5
-            if self.c > 5:
-                self.c = 5
-             
-            print(msg.ranges)
-            print("a = "+str(self.a)+"b = " + str(self.b) + "c = " + str(self.c) + "d = " + str(self.d))
-    
+            
+            if self.l > 5:
+                self.l = 5
+                
+            if self.b >5:
+                self.b = 5
+                
+            if self.r > 5:
+                self.r =5
+            
+            print ("b = " + str(self.b) + " r = " + str(self.r) + " l = " + str(self.l))
+
     def shutdownhook(self):
         self.ctrl_c = True
+    
+
+
         
 if __name__ == '__main__':
-    rospy.init_node('rosbot_test', anonymous = True)
-    rosbot_object = Rosbot()
-    
+    rospy.init_node('rosbot_test',anonymous=True) 
+    rosbot = Rosbot() 
     try:
-        rosbot_object.read_laser()
+        rosbot.read_laser()
         
     except rospy.ROSInterruptException:
+        traceback.print_exc()
         pass
     
