@@ -1,0 +1,4 @@
+max_motor_command: 400.0
+init_speed: 100.0
+K_p: 60.0
+K_d: 0.25
